@@ -54,6 +54,12 @@ source yourEnvName/bin/activate
 
 - _**Note:** ` Remember to install Django while you are in the virtual environment!`_
 
+Before install you can check whether django is installed or not by running
+
+```sh
+django-admin --version
+```
+
 To install Django type the following command
 
 ```sh
@@ -64,4 +70,67 @@ py -m pip install Django
 ```sh
 # Mac or unix system
 python -m pip install Django
+```
+
+To create a project run
+
+```sh
+# Windows
+django-admin startapp appname
+```
+
+To create an app run
+
+```sh
+# window
+py manage.py startapp appname
+```
+
+```sh
+# For Mac or unix system
+python manage.py startapp appname
+```
+
+- To start Django project run
+
+```sh
+# Mac or unix system
+python manage.py runserver
+```
+
+```sh
+#to run on different port other than 8000 add port bumber to it
+python manage.py runserver 8080
+```
+
+<center>and</center>
+
+```sh
+# Window
+py manage.py runserver
+```
+
+## Routing(Request and Response)
+
+To add a view goto the views file inside your newly created app folder and replace the text inside to
+
+```py
+from django.shortcuts import render
+from django.http import HttpResponse
+
+
+def members(request):
+    return HttpResponse("Hello world!")
+```
+
+`members here is a function, it can be anything`
+Create a file called _`urls.py`_ in the same folders as _`views.py`_ and typed the following code
+
+```py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('members/', views.members, name='members'),
+]
 ```
